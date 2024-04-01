@@ -1,22 +1,20 @@
 
 
-function deleteTask(taskId) {
-    setTasks(tasks.filter(task => task.id !== taskId));
+
+function task({ task, deleteTask, marcarTask }) {
+const click=()=>{
+    marcarTask(task.id)
 }
-
-function completedTask() {
-
-}
-
-
-function task({ tasks }) {
-    
 
     return (
         <>
-            <ul>{tasks.map((tarea) => {
-                return (<><li key={tarea.text}>{tarea.text}</li></>)
-            })}</ul>
+
+            <li key={task.text} style={{ textDecoration: task.completed ? 'line-through' : 'none' }} onClick={click}>{task.text}</li>
+            <button onClick={() => {
+                deleteTask(task.id)
+            }}>Eliminar</button>
+
+
         </>
     )
 
